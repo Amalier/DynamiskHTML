@@ -85,3 +85,4 @@ if (isPlaying = false); {
 
 process.exit();
 
+//du må endre evt loops og process exit, da dette ikke funker i html side :)
