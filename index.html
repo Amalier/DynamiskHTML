@@ -11,19 +11,22 @@
     <h1>Guess my number</h1>
     <p>try and guess a random number between 1 and 100.</p>
     <p>you have 10 attempts</p>
+    <p id = "outputtext">Guess number below</p>
     
+
     <input type="number" id="NumberGuess" name="your guesss" min="1" max="100" />
     <input type="button" value="Guess" />
-
-
 
 
 </body>
 <script> 
 const randomNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1)) + MIN_NUMBER;
 
-const button = document.querySelector("input");
-const paragraph = document.querySelector("p");
+//const button = document.querySelector("input");
+//const paragraph = document.querySelector("p");
+
+const button = document.getElementById("button")
+const paragraph = document.getElementById("p");
 
 button.addEventListener("click", updateButton);
 
