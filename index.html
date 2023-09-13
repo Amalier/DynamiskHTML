@@ -21,6 +21,7 @@
     <br>
 
 </body>
+
 <script> 
 
  const MIN_NUMBER = 1;
@@ -31,24 +32,30 @@ const randomNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1)) +
 
 const output = document.getElementById("outputtext");
 const button = document.getElementById("guessButton");
-
-//const playAgainButton =  document.getElementById("playAgain");
-//playAgainButton.addEventListener("click", wantToPlayAgain)
-
-
 button.addEventListener("click", updateButton);
+
+playAgainButton.addEventListener("click", resetPage)
+playAgainButton.disabled = true
+
+function resetPage(){
+  innerHTML="do you want to play again?"
+  window.location.reload();
+
+}
 
 function updateButton() {
   const guess = (document.getElementById("playerGuess").value);
   const li = document.createElement("li");
 
   if (guess === randomNumber) {
-    li.innerHTML = "Correct Guess!";
+    li.innerHTML = `You guessed ${guess}, Correct Guess!`;
     button.disabled = true;
+    resetPage();
 
   }else if (tries === 0){
     li.innerHTML = "you have no more tries <br/><h2><b>game over</h2></b>"
     button.disabled = true;
+    resetPage();
 
   } else if (guess < randomNumber) {
     li.innerHTML = ` you guessed ${guess}, Too low, remianing tries ${tries}`;
@@ -61,7 +68,6 @@ function updateButton() {
   output.appendChild(li)
 
 }
-
     
     </script>  
 </html>
