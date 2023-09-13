@@ -11,25 +11,24 @@
     <h1>Guess my number</h1>
     <p>try and guess a random number between 1 and 100.</p>
     <p>Guess number below</p>
-    <p id = "outputtext">you have 10 attempts</p>
+    <p>you have 10 attempts</p>
+    <ul id = "outputtext"> </ul>
     
     <input type="number" id="playerGuess" name="your guesss" min="1" max="100" />
     <button id="guessButton">Guess</button>
     <br>
     <!-- <playAgainButton id="playAgain">Do you want to play again?</playAgainButton>-->
 
-
-
 </body>
 <script> 
 
  const MIN_NUMBER = 1;
  const MAX_NUMBER = 100;
- let tries = 10;
+ let tries = 3;
 
 const randomNumber = Math.floor(Math.random() * (MAX_NUMBER - MIN_NUMBER + 1)) + MIN_NUMBER;
 
-const paragraph = document.getElementById("outputtext");
+const output = document.getElementById("outputtext");
 const button = document.getElementById("guessButton");
 
 //const playAgainButton =  document.getElementById("playAgain");
@@ -40,24 +39,26 @@ button.addEventListener("click", updateButton);
 
 function updateButton() {
   const guess = (document.getElementById("playerGuess").value);
+  const li = document.createElement("li");
 
   if (guess === randomNumber) {
-    paragraph.textContent = "Correct Guess!";
+    li.innerHTML = "Correct Guess!";
     button.disabled = true;
 
   }else if (tries === 0){
-    paragraph.textContent = "you have no more tries"
-    paragraph.textContent = "game over"
+    li.innerHTML = "you have no more tries <br/><h2><b>game over</h2></b>"
     button.disabled = true;
 
   } else if (guess < randomNumber) {
-    button.value = "Guess again";
-    paragraph.textContent = `Too low, remianing tries ${tries}`;
+    li.innerHTML = ` you guessed ${guess}, Too low, remianing tries ${tries}`;
     tries --;
    } else {
-    paragraph.textContent = `Too high,remianing tries ${tries}`;
+    li.innerHTML = `you guessed ${guess}, Too high, remianing tries ${tries}`;
     tries --;
   }
+
+  output.appendChild(li)
+
 }
 
     
