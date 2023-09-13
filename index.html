@@ -19,9 +19,6 @@
 
   <ul id="outputtext"> </ul>
 
-  <br>
-  <br>
-
 </body>
 
 <script>
@@ -37,13 +34,12 @@
   button.addEventListener("click", updateButton);
 
   playAgainButton.addEventListener("click", resetPage)
-  playAgainButton.false
+  playAgainButton.disabled = true;
 
 
   function resetPage() {
-    innerHTML = "do you want to play again?"
+    playAgainButton.disabled = false;
     window.location.reload();
-    playAgainButton.true
 
   }
 
@@ -59,10 +55,13 @@
     else if (guess === randomNumber) {
       li.innerHTML = `You guessed ${guess}, Correct Guess!`;
       button.disabled = true;
+      playAgainButton.disabled = false;
+
 
     } else if (tries === 0) {
-      li.innerHTML = "you have no more tries <br/><h2><b>game over</h2></b>"
+      li.innerHTML = "you have no more tries <br/><h2><b>game over</h2></b> <br/>"
       button.disabled = true;
+      playAgainButton.disabled = false;
 
     } else if (guess < randomNumber) {
       li.innerHTML = ` you guessed ${guess}, Too low, remianing tries ${tries}`;
